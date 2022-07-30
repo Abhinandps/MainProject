@@ -1,0 +1,61 @@
+{% extends 'facelayout.html' %}
+
+{% block title %} LOGIN {% endblock %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+{% block style %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='style/user/login.css')}}">
+
+
+{% endblock %}
+{% block content %}
+
+<section>
+
+
+  <h1 style="text-align: center; margin-top: 30px;">Please wait Mark Your Attendance</h1>
+
+  <h3 style="text-align: center; margin-top: 30px;">
+    Subject : <p>{{subject}}</p> <br>
+    Joining Time : <p>{{time}}</p> <br>
+    Schedulded Date : <p>{{date}}</p> <br>
+  </h3>
+
+  <div style="justify-content: center; align-items: center; display: flex; flex-direction: column; margin-top: 100px;">
+    <img src="{{ url_for('video') }}">
+    <div>
+      <!-- <a href="{{url_for('Events')}}" style="text-align:center; display: block; width:100px; height:50px; border:none; margin-top: 80px; padding: 10px 20px; background-color: black; color:#FFF;" >Done</a> -->
+
+      <a href="{{url_for('Events')}}"
+        style="text-align:center; display: block; width:200px; height:50px; border:none; margin-top: 80px; padding: 10px 20px; background-color: black; color:#FFF;"
+        onclick="popup()">Mark Attendance</a>
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+</section>
+{% endblock %}
+
+{% block body %}
+
+
+
+
+{% endblock %}
+
+
+{% block alert %}
+<script>
+  function popup() {
+    alert("Attendance Marked Successfully");
+  }
+</script>
+{% endblock %}

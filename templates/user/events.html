@@ -1,0 +1,109 @@
+{% extends 'dashboard.html' %}
+
+
+{% block title %} Dashboard {% endblock %}
+<link rel="stylesheet" href="{{url_for('static', filename='style/user/home.css')}}">
+
+{%block logo%}
+<div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+        class="fas fa-user me-2"></i>student</div>
+{%endblock%}
+{%block sidebar%}
+
+<div class="list-group list-group-flush my-3">
+    <a href="{{url_for('UserHomePage')}}"
+        class="list-group-item list-group-item-action bg-transparent second-text active"><i
+            class="fas fa-home me-2"></i>Home</a>
+
+    <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+            class="fas fa-calendar me-2"></i>Events</a>
+
+    {% if session['username'] %}
+    <a href="{{url_for('Logout')}}" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+            class="fas fa-power-off me-2"></i>Logout</a>
+    {% else %}
+    Not Login
+    {% endif %}
+</div>
+{%endblock%}
+
+{%block highlight%}
+Menu
+
+{%endblock%}
+
+
+{%block admin%}
+
+{%endblock%}
+
+{%block section%}
+<div class="row my-5">
+    <p>{{msg}}</p>
+    <h3 class="fs-4 mb-3">Recent Events</h3>
+    <div class="col">
+        <table class="table bg-white rounded shadow-sm  table-hover">
+            <thead>
+                <tr>
+
+                    <th scope="col">
+                        Subject
+                    </th>
+                    <th scope="col">Time</th>
+                    <th scope="col">End</th>
+                    <th scope="col">Date</th>
+
+                    <th scope="col">Visit</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% with user = session['username'] %}
+
+                {% for row in data %}
+
+                <tr>
+                    <form action="{{url_for('Attend')}}" method="POST">
+
+                        <input type="text" style="  position: absolute; left:-10000px;" name="user" value="{{user}}"
+                            readonly>
+                        <td> <input style="  border: none; outline: none;" name="subject" value="{{row.1}}" readonly>
+                        </td>
+                        <td> <input style="border: none; outline: none;" name="time" value="{{row.2}}" readonly></td>
+                        <td> <input style="border: none; outline: none;" name="end" value="{{row.3}}" readonly> </td>
+                        <td> <input style="border: none; outline: none;" name="date" value="{{row.4}}" readonly> </td>
+
+                        <td>
+
+                            <button type="submit" id="btn" class="btn btn-success" value="">Attend</button>
+
+
+                    </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endwith %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}
+{% block script %}
+
+<script>
+    let btn = document.getElementById('btn');
+    btn.addEventListener('click', () => {
+        btn.innerText = 'Loading...';
+
+        setTimeout(() => {
+            btn.innerHTML = 'Attended';
+            btn.style.background = "#e74c3c";
+            btn.style.border = "none";
+        }, 1000);
+    })
+
+
+</script>
+
+{%endblock%}

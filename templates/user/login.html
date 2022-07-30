@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} LOGIN {% endblock %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='style/user/login.css')}}">
+
+
+{% endblock %}
+
+
+{% block body %}
+
+
+<section>
+  <div class="container">
+
+    <div class="box form-control">
+
+      <div class="icon">
+        <i style="font-size:30px ;" class="bi bi-person-circle">&nbsp;Student</i>
+      </div>
+      <form action="{{url_for('UserHome')}}" method="POST">
+        <input class="form-control" type="email" name="username" id="" placeholder="Username" required>
+
+        <input class="form-control" type="password" name="password" id="" placeholder="Password" required>
+        <p style="color: red;">{{msg}}</p>
+        <button class="btn btn-primary" type="submit">Log In</button>
+        <button class="btn btn-success"><a style="text-decoration: none; color: #fff;"
+            href="{{url_for('UserSignUp')}}">Sign Up</a></button>
+        <a href="#" class="nav-link">Forget Password ?</a>
+      </form>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+{% endblock %}
+
+{% block alert %}
+<script>
+
+</script>
+{%endblock%}

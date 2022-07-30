@@ -1,0 +1,64 @@
+{% extends 'dashboard.html' %}
+
+
+{% block title %} Dashboard {% endblock %}
+<link rel="stylesheet" href="{{url_for('static', filename='style/user/home.css')}}">
+
+
+{%block logo%}
+<div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+                class="fas fa-user me-2"></i>student</div>
+{%endblock%}
+{%block sidebar%}
+<div class="list-group list-group-flush my-3">
+        <a href="{{url_for('UserHomePage')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-home me-2"></i>Home</a>
+
+        <a href="{{url_for('Events')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-calendar me-2"></i>Events</a>
+
+        {% if session['username'] %}
+        <a href="{{url_for('Logout')}}"
+                class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        class="fas fa-power-off me-2"></i>Logout</a>
+        {% else %}
+        Not Login
+        {% endif %}
+</div>
+{%endblock%}
+
+{%block highlight%}
+Menu
+
+{%endblock%}
+
+
+{%block admin%}
+
+{%endblock%}
+
+{%block section%}
+<div class="section">
+        <div class="content">
+                <h2>Simple and Free Web Application <br>
+                        to Track Attendance</h2>
+                <b> No Special Device is Required - Mobile/Tablet/Computer</b>
+                <p>Simple Attendance System and user-friendly interface will enable you to access and manage your data
+                        easily, a dashboard provides quick statistics on your active devices, employees, and their
+                        attendances and locations globally. In addition to the ability to export reports and timesheets
+                        to Excel, CSV or PDF</p>
+                <button class="btn btn-dark">Learn More</button>
+        </div>
+        <div class="image">
+                <img src="../../static/media/images/bg.webp" alt="">
+        </div>
+</div>
+{%endblock%}
+
+{% block alert %}
+<script>
+        alert(`{{msg}}`)
+</script>
+{%endblock%}

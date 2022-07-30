@@ -1,0 +1,102 @@
+{% extends 'dashboard.html' %}
+
+
+{% block title %} Dashboard {% endblock %}
+
+{%block logo%}
+<div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+                class="fas fa-user me-2"></i>Faculty</div>
+{%endblock%}
+{%block sidebar%}
+<div class="list-group list-group-flush my-3">
+        <a href="{{url_for('FacultyRoot')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-home me-2"></i>Home</a>
+
+        <a href="{{url_for('FacultyEvents')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-calendar me-2"></i>New Events</a>
+
+        <a href="{{url_for('FacultyMyEvents')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-calendar me-2"></i>My Events</a>
+
+        <a href="{{url_for('FacultyStudentList')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-users me-2"></i>Students</a>
+
+        <a href="{{url_for('Events')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-file me-2"></i>Report</a>
+
+        {% if session['username'] %}
+        <a href="{{url_for('FacultyLogout')}}"
+                class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        class="fas fa-power-off me-2"></i>Logout</a>
+        {% else %}
+        Not Login
+        {% endif %}
+</div>
+{%endblock%}
+
+{%block highlight%}
+Menu
+
+{%endblock%}
+
+{% block logout %}
+{% if session['username'] %}
+<li><a class="dropdown-item" href="{{url_for('FacultyLogout')}}">Logout</a></li>
+{% else %}
+Not Login
+{% endif %}
+{% endblock %}
+
+
+{%block admin%}
+
+{%endblock%}
+
+{%block section%}
+
+<div class="row my-5">
+        <h3 class="fs-4 mb-3">Students</h3>
+        <div class="col ">
+                <table width="500" class="table bg-white rounded shadow-sm  table-hover">
+                        <tr>
+                                <th>Roll.No</th>
+                                <th>Name</th>
+                                <th>Subject</th>
+                                <th>Time</th>
+                                <th>End</th>
+                                <th>Date</th>
+                                <th>Arrives</th>
+                                <th>Status</th>
+                        </tr>
+
+                        {% for row in data %}
+                        <tr>
+                                <td>{{row.1}}</td>
+                                <td>{{row.2}}</td>
+                                <td>{{row.3}}</td>
+                                <td>{{row.4}}</td>
+                                <td>{{row.5}}</td>
+                                <td>{{row.6}}</td>
+                                <td>{{row.7}}</td>
+                                <td>{{row.8}}</td>
+
+                        </tr>
+                        {% endfor %}
+
+
+
+                </table>
+        </div>
+
+
+
+</div>
+
+
+
+{%endblock%}

@@ -1,0 +1,50 @@
+section {
+    background: rgb(202, 178, 178);
+
+    background:url("{{url_for('static', filename='media/videos/video.mp4')}}");
+}
+
+section video {
+    color: rgb(230, 230, 230);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+section .box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 111;
+    color: #fff;
+    text-align: center;
+}
+
+section h1 {
+    font: 3em sans-serif;
+    font-weight: bold;
+}
+
+section a {
+    background-color: rgb(255, 0, 0);
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+section a:hover {
+    color: #fff;
+
+}
+
+section p {
+    font-size: 16px;
+}

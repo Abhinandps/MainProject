@@ -1,0 +1,101 @@
+{% extends 'dashboard.html' %}
+
+
+{% block title %} Dashboard {% endblock %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='style/faculty/login.css')}}">
+
+
+{%block logo%}
+<div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+                class="fas fa-user me-2"></i>Faculty</div>
+{%endblock%}
+{%block sidebar%}
+<div class="list-group list-group-flush my-3">
+        <a href="{{url_for('FacultyRoot')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-home me-2"></i>Home</a>
+
+        <a href="{{url_for('FacultyEvents')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-calendar me-2"></i>New Events</a>
+
+        <a href="{{url_for('FacultyMyEvents')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-calendar me-2"></i>My Events</a>
+
+        <a href="{{url_for('FacultyStudentList')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-users me-2"></i>Students</a>
+
+        <a href="{{url_for('FacultyReport')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-file me-2"></i>Report</a>
+
+        {% if session['username'] %}
+        <a href="{{url_for('FacultyLogout')}}"
+                class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        class="fas fa-power-off me-2"></i>Logout</a>
+        {% else %}
+        Not Login
+        {% endif %}
+</div>
+{%endblock%}
+
+{%block highlight%}
+Menu
+
+{%endblock%}
+
+
+{%block admin%}
+
+{%endblock%}
+
+{%block section%}
+
+<div class="row my-5">
+        <h3 class="fs-4 mb-3">Schedule Events</h3>
+        <div class="col">
+
+                <section>
+                        <div class="container">
+                                <div class="box form-control">
+                                        <div class="icon">
+                                                <i class="bi bi-person-rolodex"></i>
+                                        </div>
+                                        <form action="{{url_for('FacultyEventsList')}}" method="POST">
+
+                                                <select name="subject" class="form-control custom-select  mt-4"
+                                                        id="inputGroupSelect02">
+                                                        <option selected>Subject</option>
+                                                        <option value="Micro Controler">Micro Controler</option>
+                                                        <option value="Computer Networks">Computer Networks</option>
+                                                        <option value="Smart Device Programing">Smart Device Programing
+                                                        </option>
+                                                        <option value="Mobile Communication">Mobile Communication
+                                                        </option>
+                                                </select>
+
+                                                <label for="time">Join Time</label>
+                                                <input class="form-control" type="time" name="time" id=""
+                                                        placeholder="Join Time">
+                                                <label for="Validto">End Time</label>
+
+                                                <input class="form-control" type="time" name="validTo" id=""
+                                                        placeholder="Join Time">
+                                                <label for="Validto">Join Date</label>
+
+                                                <input class="form-control" type="date" name="date" id=""
+                                                        placeholder="">
+                                                <button class="btn btn-success" type="submit">Create</button>
+                                        </form>
+                                </div>
+
+                        </div>
+                </section>
+        </div>
+
+
+
+        {%endblock%}

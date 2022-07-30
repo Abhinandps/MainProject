@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} FA-System {% endblock %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='style/home.css')}}">
+
+
+{% endblock %}
+
+
+{% block body %}
+
+<!-- The video -->
+<section>
+  <video autoplay muted loop id="myVideo">
+    <source src="{{url_for('static' ,filename='media/videos/video.mp4')}}" type="video/mp4">
+  </video>
+  <div class="box">
+    <H1>FACE RECOGNAIZE ATTENDANCE SYSTEM</H1>
+    <p>Face is the representation of one’s identity. This is an automated student attendance system based on face
+      recognition.Face recognition system is very useful in life applications especially in security control systems.
+    </p>
+    <a href="#">Learn More</a>
+
+  </div>
+
+</section>
+
+{% endblock %}

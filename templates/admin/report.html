@@ -1,0 +1,74 @@
+{% extends 'dashboard.html' %}
+
+
+{% block title %} Dashboard {% endblock %}
+
+{%block logo%}
+<div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+                class="fas fa-user me-2"></i>Admin</div>
+{%endblock%}
+{%block sidebar%}
+<div class="list-group list-group-flush my-3">
+        <a href="{{url_for('AHome')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-home me-2"></i>Home</a>
+        <a href="{{url_for('ADownload')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-home me-2"></i>Download</a>
+
+
+
+
+        <a href="{{url_for('AdminLoginForm')}}"
+                class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        class="fas fa-power-off me-2"></i>Logout</a>
+
+</div>
+{%endblock%}
+
+{%block highlight%}
+Menu
+
+{%endblock%}
+
+{% block logout %}
+
+<li><a class="dropdown-item" href="{{url_for('AdminLoginForm')}}">Logout</a></li>
+
+{% endblock %}
+
+
+{%block admin%}
+
+{%endblock%}
+
+{%block section%}
+
+<button style=" float: right;" class="btn btn-danger"> <a style="color:#fff; text-decoration: none;"
+                href="{{url_for('Reset')}}"> Clear All Data</a></button>
+<button style=" margin-right:30px; float: right;" class="btn btn-danger"><a style="color:#fff; text-decoration: none;"
+                href="{{url_for('ClearRecords')}}"> Clear All Record</a></button>
+<div
+        style="  width:100%; height:30vh; display: flex; flex-direction: column; justify-content:flex-start; align-items:center;">
+        <h3>Attendance Report</h3>
+        <form action="{{url_for('Download')}}" style="text-align:center; width: 400px; " method="POST">
+
+                <select name="subject" class="form-control custom-select  mt-4" id="inputGroupSelect02">
+                        <option selected>Subject</option>
+                        <option value="Micro Controler">Micro Controler</option>
+                        <option value="Computer Networks">Computer Networks</option>
+                        <option value="Smart Device Programing">Smart Device Programing</option>
+                        <option value="Mobile Communication">Mobile Communication</option>
+                </select> <br>
+                <input class="form-control" type="time" name="time"> <br>
+                <input class="form-control" type="date" name="date"> <br> <br>
+                <button type="submit" class="btn btn-success">Download</button>
+
+
+        </form>
+</div>
+
+
+
+
+{%endblock%}

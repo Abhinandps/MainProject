@@ -1,0 +1,50 @@
+
+
+
+
+section{
+    background: rgb(231, 231, 231);
+}
+
+.container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    background: #fff;
+    width: 500px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.icon i
+{
+    display: block;
+    margin: -20px 0;
+    font: 50px sans-serif;
+}
+form{
+    width: 70%;
+    height: 70%;
+    padding: 30px 20px;
+    text-align: center;
+   
+}
+form input{
+    margin:25px 0;
+}
+form button{
+    margin: 5px 5px;
+    width: 100px;
+}
+form a {
+    text-align: center;
+    margin: 15px 0;
+}
+
+
+

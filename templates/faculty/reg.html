@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %} LOGIN {% endblock %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='style/user/reg.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='style/faculty/reg.css')}}">
+
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+<section>
+  <div class="container">
+    <div class="box form-control">
+      <div class="icon">
+        <i class="bi bi-person-rolodex"></i>
+      </div>
+      <form action="http://127.0.0.1:5000/Faregister" method="POST">
+        <input class="form-control" type="text" name="name" id="" placeholder="Full Name" required>
+
+        <!-- <input class="form-control"  type="text" name="depart" id="" placeholder="Department"> -->
+
+
+        <select name="depart" class="form-control custom-select input-group" id="inputGroupSelect02" required>
+          <option selected>Department</option>
+          <option value="Computer Engineering">Computer Engineering</option>
+        </select>
+
+        <select name="subject" class="form-control custom-select  mt-4" id="inputGroupSelect02" required>
+          <option selected>Subject</option>
+          <option value="Micro Controler">Micro Controler</option>
+          <option value="Computer Networks">Computer Networks</option>
+          <option value="Smart Device Programing">Smart Device Programing</option>
+          <option value="Mobile Communication">Mobile Communication</option>
+        </select>
+
+
+
+        <input class="form-control" type="text" name="user" id="" placeholder="Username" required>
+        <input class="form-control" type="password" name="password" id="" placeholder="Password" required>
+        <button type="submit" class="btn btn-success"><a
+            style="text-decoration: none; color: #fff;">Register</a></button>
+        <a href="{{url_for('FacultyLoginForm')}}" class="nav-link">Alredy have an account ?</a>
+      </form>
+    </div>
+
+  </div>
+
+</section>
+
+
+{% endblock %}

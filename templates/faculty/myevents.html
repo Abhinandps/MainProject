@@ -1,0 +1,132 @@
+{% extends 'dashboard.html' %}
+
+
+{% block title %} Dashboard {% endblock %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='style/faculty/login.css')}}">
+
+
+{%block logo%}
+<div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+                class="fas fa-user me-2"></i>Faculty</div>
+{%endblock%}
+{%block sidebar%}
+<div class="list-group list-group-flush my-3">
+        <a href="{{url_for('FacultyRoot')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-home me-2"></i>Home</a>
+
+        <a href="{{url_for('FacultyEvents')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-calendar me-2"></i>New Events</a>
+
+        <a href="{{url_for('FacultyMyEvents')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-calendar me-2"></i>My Events</a>
+
+        <a href="{{url_for('FacultyStudentList')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-users me-2"></i>Students</a>
+
+        <a href="{{url_for('FacultyReport')}}"
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-file me-2"></i>Report</a>
+
+        {% if session['username'] %}
+        <a href="{{url_for('FacultyLogout')}}"
+                class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        class="fas fa-power-off me-2"></i>Logout</a>
+        {% else %}
+        Not Login
+        {% endif %}
+</div>
+{%endblock%}
+
+{%block highlight%}
+Menu
+
+{%endblock%}
+
+
+{%block admin%}
+
+{%endblock%}
+
+
+{%block section%}
+
+<div class="row my-5">
+        <h3 class="fs-4 mb-3">My Events</h3>
+        <div class="col">
+                <table width="500" class="table bg-white rounded shadow-sm  table-hover">
+                        <tr>
+                                <th>ID</th>
+                                <th>Subject</th>
+                                <th>Time</th>
+                                <th>End</th>
+
+                                <th>Date</th>
+                                <th>
+                                        Update/Delete
+                                </th>
+                        </tr>
+
+                        {% for row in data %}
+                        <tr>
+                                <form action="{{url_for('FacultyEventUpdate')}}" method="POST">
+                                        <td> <input style="border: none; outline:none;" type="text" name="id"
+                                                        value="{{row.0}}" readonly> </td>
+                                        <td> <input style="border: none; outline: none;" type="text" name="subject"
+                                                        value="{{row.1}}" readonly></td>
+                                        <td><input style="border: none; outline:none;" type="time" name="time"
+                                                        value="{{row.2}}" readonly></td>
+                                        <td><input style="border: none; outline:none;" type="text" name="end"
+                                                        value="{{row.3}}" readonly></td>
+                                        <td><input style="border: none; outline:none;" type="text" name="date"
+                                                        value="{{row.4}}" readonly></td>
+
+                                        <td> <button type="submit" class="btn btn-primary">Update</button>
+                                </form>
+                                <form action="/delete/{{ row.0 }}" method="GET" style="display: inline;">
+
+                                        <button type="submit" class="btn btn-success"> Delete </button></td>
+
+                                </form>
+
+                        </tr>
+
+                        {%endfor %}
+
+
+                        <!-- <tr>
+                            <td>some </td>
+                            <td>some </td>
+                            <td>some </td>
+                            <td> <button class="btn btn-primary">Update</button>
+                                <button class="btn btn-success">Delete</button> </td>
+                        </tr>
+                        <tr>
+                            <td>some </td>
+                            <td>some </td>
+                            <td>some </td>
+                            <td> <button class="btn btn-primary">Update</button>
+                                <button class="btn btn-success">Delete</button> </td>
+                        </tr>
+                        <tr>
+                            <td>some </td>
+                            <td>some </td>
+                            <td>some </td>
+                            <td> <button class="btn btn-primary">Update</button>
+                                <button class="btn btn-success">Delete</button> </td>
+                        </tr>  -->
+                </table>
+        </div>
+
+
+
+</div>
+
+
+
+
+{%endblock%}
