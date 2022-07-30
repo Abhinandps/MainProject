@@ -9,7 +9,7 @@ Then Open the Code Editor VScode -> choose Terminal then,
    
    git clone https//github...copypath......
 
-2) check the current directory is PROJECT
+2) check the terminal in current directory
 
 3) Choose Terminal do the below steps
 
